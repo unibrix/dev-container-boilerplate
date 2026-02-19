@@ -1,0 +1,69 @@
+x-node-dev: &node-dev
+  build:
+    context: .
+    dockerfile: Dockerfile
+  image: unibrix-dev
+
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD:-postgres}
+      POSTGRES_DB: ${DATABASE_NAME:-app}
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - ./../postgres:/var/lib/postgresql/data
+
+  backend:
+    <<: *node-dev
+    working_dir: /workspaces/app/backend
+    volumes:
+      - ./..:/workspaces/app:cached
+    depends_on:
+      - db
+    ports:
+      - "${APP_PORT:-3000}:${APP_PORT:-3000}"
+    env_file:
+      - .env
+    command: bash -lc "npm ci || npm install; npm run start:dev"
+    restart: unless-stopped
+
+  frontend:
+    <<: *node-dev
+    working_dir: /workspaces/app/frontend
+    volumes:
+      - ./..:/workspaces/app:cached
+    depends_on:
+      - backend
+    ports:
+      - "3003:3003"
+    env_file:
+      - .env
+    command: bash -lc "npm ci || npm install; npm run dev -- --port 3003"
+    restart: unless-stopped
+
+  mailcatcher:
+    image: sj26/mailcatcher:latest
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
+  adminer:
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    depends_on:
+      - frontend
+      - backend
+    env_file:
+      - .env
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+    restart: no
