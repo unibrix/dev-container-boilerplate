@@ -10,7 +10,8 @@ Monorepo example:
 
 1. Open repo in VS Code
 2. `Cmd + Shift + P > Dev Containers: Reopen in Container`
-3. Verify local endpoints:
+3. Wait for the initial dependency bootstrap to finish for both `backend/` and `frontend/`
+4. Verify local endpoints:
    ```bash
    curl -I http://localhost:3003
    curl -I http://localhost:4242
