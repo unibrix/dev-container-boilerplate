@@ -15,10 +15,8 @@
       ],
       "settings": {
         "editor.formatOnSave": true,
-        "typescript.tsdk": "/workspaces/app/backend/node_modules/typescript/lib",
-        "typescript.enablePromptUseWorkspaceTsdk": true,
-        "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-        "prettier.prettierPath": "/workspaces/app/backend/node_modules/prettier/index.cjs",
+        "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+        "js/ts.tsserver.experimental.enableProjectDiagnostics": true,
         "eslint.workingDirectories": [
           { "directory": "backend", "changeProcessCWD": true },
           { "directory": "frontend", "changeProcessCWD": true }
@@ -31,10 +29,18 @@
           "**/.DS_Store": true,
           "**/Thumbs.db": true,
           "**/.idea": true,
-          "**/.node_modules": true
+          "**/node_modules": true
         },
-        "javascript.updateImportsOnFileMove.enabled": "always",
-        "typescript.updateImportsOnFileMove.enabled": "always",
+        "files.watcherExclude": {
+          "**/.git/objects/**": true,
+          "**/.git/subtree-cache/**": true,
+          "**/node_modules/**": true,
+          "**/.next/**": true,
+          "**/dist/**": true,
+          "**/coverage/**": true,
+          "**/postgres/**": true
+        },
+        "js/ts.updateImportsOnFileMove.enabled": "always",
         "editor.multiCursorModifier": "ctrlCmd",
         "git.openRepositoryInParentFolders": "never",
         "git.confirmSync": false,
