@@ -162,7 +162,7 @@ https://github.com/unibrix/dev-container-boilerplate
 - Логи сервісів: Docker Desktop (агреговані по всіх контейнерах) або `docker compose logs -f <service>`.
 - Візуальна індикація активного devcontainer через Peacock (`peacock.remoteColor`) зменшує помилки context-switch.
 
-## Слайд 9. Live Demo #1 (Dev Container + Logs)
+## Слайд 9. Live Demo
 
 ### devcontainer demo
 

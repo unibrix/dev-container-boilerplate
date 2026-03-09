@@ -9,3 +9,4 @@ node_modules
 
 postgres
 .vscode/settings.json
+docs/slidev/dist
