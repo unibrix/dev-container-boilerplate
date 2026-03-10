@@ -32,7 +32,22 @@
 
 https://github.com/unibrix/dev-container-boilerplate
 
-## Слайд 1. Why This Stack
+## Слайд 1. Problem Statement
+
+- Drift середовищ: різні версії Node, package manager, system libs, shell-tools.
+  Нестабільний onboarding і непередбачуваний time-to-first-run.
+
+- Security debt: запуск незнайомих `npm` скриптів і CLI-команд напряму на host OS.
+  Наслідок: ризик втрати локальних секретів, credential leak, компрометація персонального середовища.
+
+- Integration friction: без стабільного HTTPS URL важко тестувати OAuth callbacks і webhooks.
+  Наслідок: тимчасові костилі, ручні обхідні рішення, повільні інтеграційні ітерації.
+
+- AI execution risk: агент з full-access (yolo) може виконати руйнівну або небезпечну команду.
+- Наслідок: небажані зміни у файлах, конфігах, git-стані та потенційний security incident на хості.
+
+
+## Слайд 2. Why This Stack
 
 - Це практичний стек, який я використовую в роботі і пропоную як шаблон для ознайомлення.
 - Швидкий старт як для нового, так і для існуючого проєкту: `Reopen in Container` замість ручного сетапу.
@@ -40,7 +55,7 @@ https://github.com/unibrix/dev-container-boilerplate
 - Проєктний набір інструментів і плагінів фіксується в репозиторії: runtime + VS Code settings/extensions.
 - AI-асистент з широкими правами працює в керованому середовищі, де простіше застосувати guardrails.
 
-## Слайд 2. `devcontainer.json` за 60 секунд
+## Слайд 3. `devcontainer.json` за 60 секунд
 
 ```jsonc
 {
@@ -78,20 +93,6 @@ https://github.com/unibrix/dev-container-boilerplate
 - `.devcontainer/docker-compose.yml`: app/data services.
 - `.devcontainer/Dockerfile`: базовий image + toolchain (`@openai/codex`).
 - `.devcontainer/.env` і `.env.example`: конфіг і секрети.
-
-## Слайд 3. Problem Statement
-
-- Drift середовищ: різні версії Node, package manager, system libs, shell-tools.
-  Нестабільний onboarding і непередбачуваний time-to-first-run.
-
-- Security debt: запуск незнайомих `npm` скриптів і CLI-команд напряму на host OS.
-  Наслідок: ризик втрати локальних секретів, credential leak, компрометація персонального середовища.
-
-- Integration friction: без стабільного HTTPS URL важко тестувати OAuth callbacks і webhooks.
-  Наслідок: тимчасові костилі, ручні обхідні рішення, повільні інтеграційні ітерації.
-
-- AI execution risk: агент з full-access (yolo) може виконати руйнівну або небезпечну команду.
-- Наслідок: небажані зміни у файлах, конфігах, git-стані та потенційний security incident на хості.
 
 ## Слайд 4. Threat Model
 

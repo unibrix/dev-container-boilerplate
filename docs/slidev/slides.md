@@ -22,6 +22,29 @@ transition: fade
 
 ---
 
+## 🚨 Problem Statement
+
+<div class="soft-grid">
+  <div class="soft-card">
+    <h3>🔀 Drift середовищ</h3>
+    <p>різні версії Node, package manager, system libs, shell-tools. Нестабільний onboarding і непередбачуваний time-to-first-run.</p>
+  </div>
+  <div class="soft-card">
+    <h3>🔓 Security debt</h3>
+    <p>запуск незнайомих <code>npm</code> скриптів і CLI-команд напряму на host OS. Наслідок: ризик втрати локальних секретів, credential leak, компрометація персонального середовища.</p>
+  </div>
+  <div class="soft-card">
+    <h3>🔗 Integration friction:</h3>
+    <p>без стабільного HTTPS URL важко тестувати OAuth callbacks і webhooks. Наслідок: тимчасові костилі, ручні обхідні рішення, повільні інтеграційні ітерації.</p>
+  </div>
+  <div class="soft-card">
+    <h3>🤖 AI execution risk</h3>
+    <p>агент з full-access (yolo) може виконати руйнівну або небезпечну команду. Наслідок: небажані зміни у файлах, конфігах, git-стані та потенційний security incident на хості.</p>
+  </div>
+</div>
+
+---
+
 ## 🧱 Why This Stack
 
 <div class="soft-grid">
@@ -85,28 +108,6 @@ class: compact-code
 
 ---
 
-## 🚨 Problem Statement
-
-<div class="soft-grid">
-  <div class="soft-card">
-    <h3>🔀 Drift середовищ</h3>
-    <p>різні версії Node, package manager, system libs, shell-tools. Нестабільний onboarding і непередбачуваний time-to-first-run.</p>
-  </div>
-  <div class="soft-card">
-    <h3>🔓 Security debt</h3>
-    <p>запуск незнайомих <code>npm</code> скриптів і CLI-команд напряму на host OS. Наслідок: ризик втрати локальних секретів, credential leak, компрометація персонального середовища.</p>
-  </div>
-  <div class="soft-card">
-    <h3>🔗 Integration friction:</h3>
-    <p>без стабільного HTTPS URL важко тестувати OAuth callbacks і webhooks. Наслідок: тимчасові костилі, ручні обхідні рішення, повільні інтеграційні ітерації.</p>
-  </div>
-  <div class="soft-card">
-    <h3>🤖 AI execution risk</h3>
-    <p>агент з full-access (yolo) може виконати руйнівну або небезпечну команду. Наслідок: небажані зміни у файлах, конфігах, git-стані та потенційний security incident на хості.</p>
-  </div>
-</div>
-
----
 
 ## 🛡️ Threat Model
 
